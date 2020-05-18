@@ -116,16 +116,16 @@ void GazeboRosRaySensor::Load(gazebo::sensors::SensorPtr _sensor, sdf::ElementPt
     std::string output_type_string = _sdf->Get<std::string>("output_type");
     if (output_type_string == "sensor_msgs/LaserScan") {
       impl_->pub_ = impl_->ros_node_->create_publisher<sensor_msgs::msg::LaserScan>(
-        "~/out", rclcpp::SensorDataQoS());
+        "~/out", 10);
     } else if (output_type_string == "sensor_msgs/PointCloud") {
       impl_->pub_ = impl_->ros_node_->create_publisher<sensor_msgs::msg::PointCloud>(
-        "~/out", rclcpp::SensorDataQoS());
+        "~/out", 10);
     } else if (output_type_string == "sensor_msgs/PointCloud2") {
       impl_->pub_ = impl_->ros_node_->create_publisher<sensor_msgs::msg::PointCloud2>(
-        "~/out", rclcpp::SensorDataQoS());
+        "~/out", 10);
     } else if (output_type_string == "sensor_msgs/Range") {
       impl_->pub_ = impl_->ros_node_->create_publisher<sensor_msgs::msg::Range>(
-        "~/out", rclcpp::SensorDataQoS());
+        "~/out", 10);
     } else {
       RCLCPP_ERROR(
         impl_->ros_node_->get_logger(), "Invalid <output_type> [%s]", output_type_string.c_str());
